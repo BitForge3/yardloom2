@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yardloom – Land, houses and shops for sale or rent</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f5f1;--card:#fff;--ink:#16241e;--mute:#5d6d64;--line:#dbe3dc;--brand:#0e4d3a;--brand-ink:#fff;--sun:#f0b429;--sun-ink:#3a2a00;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1714;--card:#17221d;--ink:#e8efe9;--mute:#9bb0a4;--line:#2a3a32;--brand:#3fb68b;--brand-ink:#04150e;--sun:#f0b429;--sun-ink:#2a1f00}}
+:root[data-theme="dark"]{--bg:#0f1714;--card:#17221d;--ink:#e8efe9;--mute:#9bb0a4;--line:#2a3a32;--brand:#3fb68b;--brand-ink:#04150e;--sun:#f0b429;--sun-ink:#2a1f00}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Figtree,system-ui,sans-serif}
+h1,h2,h3,.logo{font-family:'Bricolage Grotesque',Georgia,serif;letter-spacing:-.02em;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.logo{font-size:26px;font-weight:800;color:var(--brand)}
+.logo i{font-style:normal;color:var(--sun)}
+button,select,input,textarea{font:inherit;color:inherit}
+.btn{background:var(--brand);color:var(--brand-ink);border:0;border-radius:10px;padding:10px 18px;font-weight:600;cursor:pointer}
+.btn.alt{background:var(--sun);color:var(--sun-ink)}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--ink)}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.hero{padding:28px 0 18px}
+.hero h1{font-size:clamp(34px,7vw,60px);line-height:1.02;max-width:14ch}
+.hero p{color:var(--mute);max-width:46ch;margin:12px 0 0}
+.bar{display:grid;gap:10px;grid-template-columns:2fr 1fr 1fr 1fr;margin:22px 0 8px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.bar input,.bar select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.count{color:var(--mute);margin:14px 0}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));padding-bottom:40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;text-align:left;padding:0;display:flex;flex-direction:column}
+.ph{height:140px;display:grid;place-items:center;font:800 40px 'Bricolage Grotesque',serif;color:rgba(255,255,255,.9);background-size:cover;background-position:center;position:relative}
+.tag{position:absolute;left:10px;top:10px;background:var(--sun);color:var(--sun-ink);font-size:13px;font-weight:600;border-radius:6px;padding:2px 8px}
+.tag.f{left:auto;right:10px;background:var(--ink);color:var(--bg)}
+.body{padding:12px 14px 14px}
+.price{font:800 20px 'Bricolage Grotesque',serif;color:var(--brand)}
+.body h3{font-size:17px;margin:2px 0}
+.meta{color:var(--mute);font-size:14px}
+.empty{grid-column:1/-1;text-align:center;padding:40px 10px;color:var(--mute)}
+dialog{border:0;border-radius:16px;padding:0;max-width:560px;width:calc(100% - 24px);background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+.dlg{padding:20px}
+.dlg .ph{height:200px;border-radius:12px;margin-bottom:14px}
+.row{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+label{display:block;font-weight:600;font-size:14px;margin:10px 0 4px}
+.dlg input,.dlg select,.dlg textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.note{font-size:13px;color:var(--mute);margin-top:10px}
+footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--mute);font-size:14px}
+@media(max-width:700px){.bar{grid-template-columns:1fr 1fr}.bar input{grid-column:1/-1}}
+.pl{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}.pl div{border:1px solid var(--line);border-radius:12px;padding:12px}.pl b{font:800 20px "Bricolage Grotesque",serif;color:var(--brand)}.it{border-top:1px solid var(--line);padding:10px 0;display:flex;gap:8px;justify-content:space-between;align-items:center;flex-wrap:wrap}.it .btn{padding:6px 12px}.ver{background:var(--brand);color:var(--brand-ink)}</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="logo">Yard<i>loom</i></div><div class="acts" style="margin:0"><button class="btn ghost" id="authBtn">Log in</button><button class="btn ghost" id="priceBtn">Pricing</button><button class="btn ghost" id="admBtn" hidden>Admin</button><button class="btn alt" id="postBtn">Post a listing</button></div></header>
+<div id="vbar" hidden style="background:var(--sun);color:var(--sun-ink);padding:10px 14px;border-radius:10px;margin-top:8px">Confirm your email to post listings. <button class="btn ghost" id="vRe" style="padding:4px 10px">Resend email</button></div>
+<section class="hero">
+<h1>Find land, homes and shops.</h1>
+<p>Browse properties for sale or rent, or list your own in a few minutes.</p>
+</section>
+<div class="bar">
+<input id="q" type="search" placeholder="Search by title, area or city" aria-label="Search">
+<select id="fType" aria-label="Property type"><option value="">All types</option><option>Land</option><option>House</option><option>Shop</option><option>Apartment</option><option>Office</option></select>
+<select id="fMode" aria-label="Sale or rent"><option value="">Sale or rent</option><option>Sale</option><option>Rent</option></select>
+<select id="fSort" aria-label="Sort"><option value="new">Newest</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select>
+</div>
+<div class="count" id="count"></div>
+<div class="grid" id="grid"></div>
+<footer>Never pay before you have inspected a property and checked its documents. · <a href="/terms.html">Terms</a> · <a href="/privacy.html">Privacy</a></footer>
+</div>
+
+<dialog id="view"><div class="dlg" id="viewBody"></div></dialog>
+
+<dialog id="post"><div class="dlg">
+<h2>Post a listing</h2>
+<label for="pTitle">Title</label><input id="pTitle" placeholder="e.g. 2 plots of land near the airport road">
+<div class="row">
+<div><label for="pType">Type</label><select id="pType"><option>Land</option><option>House</option><option>Shop</option><option>Apartment</option><option>Office</option></select></div>
+<div><label for="pMode">For</label><select id="pMode"><option>Sale</option><option>Rent</option></select></div>
+</div>
+<div class="row">
+<div><label for="pPrice">Price (₦)</label><input id="pPrice" type="number" min="0" inputmode="numeric"></div>
+<div><label for="pCity">City</label><input id="pCity" placeholder="Jos"></div>
+</div>
+<label for="pArea">Area / address</label><input id="pArea" placeholder="Rayfield">
+<label for="pDesc">Description</label><textarea id="pDesc" rows="3" placeholder="Size, documents, condition, what's nearby"></textarea>
+<div class="row">
+<div><label for="pName">Your name</label><input id="pName"></div>
+<div><label for="pPhone">WhatsApp number</label><input id="pPhone" inputmode="tel" placeholder="080..."></div>
+</div>
+<label for="pPhoto">Photo (optional)</label><input id="pPhoto" type="file" accept="image/*">
+<div class="note" id="err" role="alert"></div>
+<div class="acts"><button class="btn" id="save">Publish listing</button><button class="btn ghost" id="cancel">Cancel</button></div>
+<div class="note">New listings are reviewed before they go live. You must be logged in to post.</div>
+</div></dialog>
+
+<dialog id="price"><div class="dlg"><h2>Pricing</h2><p class="meta">Posting is free. Pay only to get more views.</p>
+<div class="pl"><div><b>Free</b><br>Standard listing, shown in search results.</div><div><b>₦5,000</b><br>Featured for 7 days. Pinned to the top.</div><div><b>₦15,000</b><br>Featured for 30 days. Pinned to the top.</div><div><b>₦20,000</b><br>Agent plan, 30 days: unlimited listings and a Verified badge.</div></div>
+<div class="acts"><button class="btn alt" id="agentBtn">Get the Agent plan (₦20,000)</button><button class="btn ghost" data-close>Close</button></div><p class="note">The Agent plan lasts 30 days. Free accounts can post 3 listings.</p></div></dialog>
+<dialog id="feat"><div class="dlg"><h2>Feature this listing</h2><div class="meta" id="fTitle"></div>
+<label for="fPlan">Plan</label><select id="fPlan"><option value="7">7 days: ₦5,000</option><option value="30">30 days: ₦15,000</option></select>
+<p class="note">You will pay securely on Paystack, then come straight back here.</p><div class="note" id="fErr" role="alert"></div>
+<div class="acts"><button class="btn" id="fSend">Pay with Paystack</button><button class="btn ghost" data-close>Cancel</button></div></div></dialog>
+<dialog id="auth"><div class="dlg"><h2 id="aTitle">Log in</h2><div id="aNameW"><label for="aName">Your name</label><input id="aName" autocomplete="name"></div>
+<label for="aEmail">Email</label><input id="aEmail" type="email" autocomplete="email"><label for="aPass">Password</label><input id="aPass" type="password" autocomplete="current-password" placeholder="At least 8 characters">
+<div class="note" id="aErr" role="alert"></div><label id="aAgreeW" style="display:flex;gap:8px;font-weight:400" hidden><input type="checkbox" id="aAgree" style="width:auto"><span>I agree to the <a href="/terms.html" target="_blank">Terms</a> and <a href="/privacy.html" target="_blank">Privacy Policy</a>.</span></label><div class="acts"><button class="btn" id="aGo">Log in</button><button class="btn ghost" id="aSwitch">Create an account</button></div><p class="note"><a href="#" id="aForgot">Forgot your password?</a></p></div></dialog>
+<dialog id="adm"><div class="dlg"><h2>Admin</h2><h3 style="font-size:16px;margin-top:12px">Waiting for review</h3><div id="admP"></div><h3 style="font-size:16px;margin-top:16px">Live listings</h3><div id="admL"></div><div class="acts"><button class="btn ghost" data-close>Close</button></div></div></dialog>
+<dialog id="rst"><div class="dlg"><h2>Choose a new password</h2><label for="rPass">New password</label><input id="rPass" type="password" autocomplete="new-password" placeholder="At least 8 characters"><div class="note" id="rErr" role="alert"></div><div class="acts"><button class="btn" id="rGo">Save password</button></div></div></dialog>
+<script src="/app.js"></script>
+</body>
+</html>
